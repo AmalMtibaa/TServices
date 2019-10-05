@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/reset.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/fancybox-thumbs.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/fancybox-buttons.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/fancybox-buttons.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/fancybox.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/animate.css")>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/main.css")>
+
+    <script type="text/javascript" src=@Url.Content("~/Content/js/jquery.js")></script>
+    <script type="text/javascript" src=@Url.Content("~/Content/js/fancybox.js")></script>
+    <script type="text/javascript" src=@Url.Content("~/Content/js/fancybox-buttons.js")></script>
+    <script type="text/javascript" src=@Url.Content("~/Content/js/fancybox-media.js")></script>
+    <script type="text/javascript" src=@Url.Content("~/Content/js/fancybox-thumbs.js")></script>
+    <script type="text/javascript" src=@Url.Content("~/Content/js/wow.js")></script>
+    <script type="text/javascript" src=@Url.Content("~/Content/js/main.js")></script>
+
+
+
+    <link rel="stylesheet" href=@Url.Content("~/Content/css/footer-distributed-with-address-and-phones.css")>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <section class="billboard light">
+        <header class="wrapper light">
+            <!--<a href="#"><img class="logo" src="Content/img/logo_light.png" alt="" /></a>  logo !--> l
+            <nav>
+                <ul>
+                    <li>@Html.ActionLink("Accueil", "Accueil", "Home")</li>
+                    <li>@Html.ActionLink("Nos Catégories", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Recherche Service", "Recherche", "Home")</li>
+                    @if (Session["UserId"] != null)
+    {
+                <li>@Html.ActionLink(Session["UserName"].ToString(), "LoggedIn", "Login")</li>
+                <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                <li>@Html.ActionLink("Demande Service", "Create", "PublicationClients")</li>
+}
+else
+{
+                <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                <li>@Html.ActionLink("Register", "Register", "Login")</li>
+}
+                    <li>
+                    <li>@Html.ActionLink("Publication", "Index", "PublicationClients")</li>
+
+                </ul>
+            </nav>
+        </header>
+
+        <div class="caption light animated wow fadeInDown clearfix">
+            <h1>TServices</h1>
+            <p>On regroupe tous les services pour vous</p>
+            <hr>
+        </div>
+        <div class="shadow"></div>
+    </section><!--  End billboard  -->
+
+
+    <section class="services wrapper">
+        <ul class="clearfix">
+            <li class="animated wow fadeInDown">
+                <div class="container body-content">
+                    @RenderBody()
+                </div>
+            </li>
+        </ul>
+    </section><!--  End services  -->
+
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+
+            <h3><span>TServices</span></h3>
+
+            <p class="footer-links">
+                <a href="#">Accueil</a>
+                ·
+                <a href="#">Nos Categories</a>
+                ·
+                <a href="#">Publication</a>
+                .   
+                <a href="#">Contact</a>
+            </p>
+
+            <p class="footer-company-name">TServices &copy; 2018</p>
+        </div>
+
+        <div class="footer-center">
+
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Cité Olympique</span> Tunis, Tunisie</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>7486807</p>
+            </div>
+
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@TServices.com">support@TServices.com</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-right">
+
+            <p class="footer-company-about">
+                <span>About us</span>
+                TServices est un site web d’information et d’annonce qui a pour objectif de faciliter la communication entre un client qui cherche un service dans n’importe quel domaine et le fournisseur de ce service.
+            </p>
+
+            <div class="footer-icons">
+
+                <a href="https://web.facebook.com/mtibaa.amal"><i class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/Amall_Mt"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/mtibaa-amal-ba1611113/"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+
+            </div>
+
+        </div>
+
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

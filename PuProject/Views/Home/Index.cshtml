@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TServices.Models.Categorie>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    a:active,
+    a:hover {
+        outline: 0;
+    }
+    a {
+        margin: 0;
+        padding: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        color: #00ace6;
+    }
+    img {
+        height: 200px;
+        width: 350px;
+    }
+   
+</style>
+
+<section class="services wrapper">
+    <h2 id="what">Nos Catégories</h2>
+    @{
+
+        int i = 0;
+        @:<ul class="clearfix">
+
+
+            foreach (var item in Model)
+            {
+
+                if (i % 3 == 0)
+                {
+                    @:</ul>
+                @:<ul class="clearfix">
+                }
+                <li class="animated wow fadeInDown">
+                    <img class="icon" src=@Url.Content("~/Content/img/" + item.ID + ".jpg")>
+                    <span class="separator"></span>
+                    <h2>@Html.ActionLink(item.Nom, "FiltrerParCategorie", new { c = item.Nom })</h2>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </p>
+                </li>
+                i++;
+
+            }
+
+            @:</ul>
+    }
+</section>
+<script>
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        $('html, body').animate({
+            scrollTop: $('#what').offset().top
+        }, 'slow');
+    });
+</script>

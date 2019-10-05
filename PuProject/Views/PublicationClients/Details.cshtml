@@ -1,0 +1,45 @@
+﻿@model  PuProject.Models.PublicationClient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+
+<style>
+    
+    section {
+        width: 350%;
+        background-color: white;
+    }
+
+    h3 {
+        color: aliceblue;
+    }
+
+    img {
+        width: 450px;
+        height: 340px;
+    }
+</style>
+<section class="clearfix animated wow fadeInDown" id="what">
+    <div class="content">
+        <div class="content1">
+            <div class="content1-1">
+                <h3>ID :@Html.DisplayFor(model => model.ID) <br /></h3>
+                <h3>Gouvernerat :@Html.DisplayFor(model => model.Gouvernerat) <br /></h3>
+                <h3>Ville :@Html.DisplayFor(model => model.Ville) <br /></h3>
+                <h3>Categorie :@Html.DisplayFor(model => model.Categorie) <br /></h3>
+            </div>
+        </div>
+        <div class="content1">
+            <div class="content1-1">
+                <h3>Description :@Html.DisplayFor(model => model.Description) <br /></h3>
+            </div>
+        </div>
+    </div>
+</section>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>

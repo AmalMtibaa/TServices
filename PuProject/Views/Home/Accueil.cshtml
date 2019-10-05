@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Accueil";
+}
+<style>
+    img{
+        width:40px;
+        height:40px;
+    }
+    .TServices{
+        width:450px;
+        height:350px;
+    }
+</style>
+
+<section class="testimonials wrapper">
+    
+
+    <ul class="clearfix">
+
+        <li class="animated wow fadeInDown">
+            <p>
+                <img src=@Url.Content("~/Content/img/quotes.png") class="quotes" />Le Tunisien trouve des problèmes dans la recherche de certains services qui ne se trouvent pas partout, sans locales, ou nécessitent le déplacement de celui qui offre le service. Pour avoir le contact d’un certain fournisseur de service (exemple : plombiers, techniciens...), Il doit chercher dans son entourage, sans être sûr de trouver exactement ce qu’il veut.
+                <span class="triangle"></span>
+            </p>
+            <div class="client">
+                <img src=@Url.Content("~/Content/img/amal.jpg") class="avatar" />
+                <div class="client_details">
+                    <h4>Mtibaa Amal</h4>
+                    <h5>Front end Developer </h5>
+                </div>
+            </div>
+
+        </li>
+
+        <li class="animated wow fadeInDown" data-wow-delay=".8s">
+
+            <p>
+                <img src=@Url.Content("~/Content/img/quotes.png") class="quotes" />TServices est un site web d’information et d’annonce qui a pour objectif de faciliter la communication entre un client qui cherche un service dans n’importe quel domaine et le fournisseur de ce service. Ce site permet à la fois d’aider le client à satisfaire ses besoins et de faire de la publicité pour le fournisseur du service.
+                <span class="triangle"></span>
+            </p>
+            <br />
+            <div class="client">
+                <img src=@Url.Content("~/Content/img/wassim.jpg") class="avatar" />
+                <div class="client_details">
+                    <h4>Riahi Mohamed Wassim</h4>
+                    <h5>Back end developer</h5>
+                </div>
+            </div>
+        </li>
+        <li class="animated wow fadeInDown" data-wow-delay=".8s">
+        <img src=@Url.Content("~/Content/img/TServices.PNG") class="TServices" /></li>
+
+    </ul>
+</section><!--  End testimonials  -->

@@ -1,0 +1,101 @@
+﻿@model TServices.Models.Fournisseur
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<head>
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/styleFormulaire.css")>
+</head>
+<style>
+    .a {
+        width: 1050px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        width: 1050px;
+        margin: 0 auto;
+    }
+    input[type=text], input[type=number], input[type=password] {
+        width: 100%;
+        padding: 8px 5px;
+        background: linear-gradient(#1f2124, #27292c);
+        border: 1px solid #222;
+        box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+        border-radius: 0.3em;
+        margin-bottom: 20px;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    .form-control {
+        color: white;
+    }
+
+    .tel  {
+        color: black;
+    }
+    label{
+        color:white;
+    }
+   
+</style>
+
+<div class="a">
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+         @Html.AntiForgeryToken()
+
+    <h1 id="what">Register</h1>
+    <div class="inset">
+        <p>
+            <label for="email">@Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+            @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="email">@Html.LabelFor(model => model.Prenom, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+            @Html.EditorFor(model => model.Prenom, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prenom, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="email">@Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+            @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="email">@Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+
+            @Html.TextBox("Photo", null, new { type = "file", @class = "input-file"})
+        </p>
+        <p>
+            <label for="email">@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        </p>
+        <p>
+            <label for="password">@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })</label>
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </p>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    }
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        $('html, body').animate({
+            scrollTop: $('#what').offset().top
+        }, 'slow');
+    });
+</script>

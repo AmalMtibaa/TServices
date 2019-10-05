@@ -1,0 +1,6 @@
+C:\Users\asus\source\repos\PuProject\Test\bin\Debug\Test.exe.config
+C:\Users\asus\source\repos\PuProject\Test\bin\Debug\Test.exe
+C:\Users\asus\source\repos\PuProject\Test\bin\Debug\Test.pdb
+C:\Users\asus\source\repos\PuProject\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\asus\source\repos\PuProject\Test\obj\Debug\Test.exe
+C:\Users\asus\source\repos\PuProject\Test\obj\Debug\Test.pdb

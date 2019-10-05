@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuProject", "PuProject\PuProject.csproj", "{37C58B21-63F0-4CAD-AC68-CFCDCD050446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TServices", "..\TServices\TServices\TServices.csproj", "{38897741-6430-4205-B24D-7145807E1CE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{AD44E2CF-3C6F-4F17-B27E-80D01B3D478F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37C58B21-63F0-4CAD-AC68-CFCDCD050446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C58B21-63F0-4CAD-AC68-CFCDCD050446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C58B21-63F0-4CAD-AC68-CFCDCD050446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C58B21-63F0-4CAD-AC68-CFCDCD050446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38897741-6430-4205-B24D-7145807E1CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38897741-6430-4205-B24D-7145807E1CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38897741-6430-4205-B24D-7145807E1CE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38897741-6430-4205-B24D-7145807E1CE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD44E2CF-3C6F-4F17-B27E-80D01B3D478F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD44E2CF-3C6F-4F17-B27E-80D01B3D478F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD44E2CF-3C6F-4F17-B27E-80D01B3D478F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD44E2CF-3C6F-4F17-B27E-80D01B3D478F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9816FF4A-B62E-4BBD-9A37-36DCCE282E33}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,145 @@
+﻿@model TServices.Models.CatFour
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='//fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
+    <link href=@Url.Content("~/Content/css/style.css") rel="stylesheet" type="text/css" media="all" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    section {
+        width: 350%;
+        
+    }
+    .textarea {
+        height:60px;
+        width:150px
+    }
+    .content1-1 {
+        background-color: #e6f2ff;
+    }
+    .content1, .content1-1 {
+        text-align: left;
+        width: 750px;
+        font-size: small;
+    }
+
+    img {
+        height: 55px;
+        width: 67px;
+    }
+
+    #contenu {
+        border: 1px outset #f2f2f2;
+        width: 350px;
+        background-color: white;
+        font-family: Arial;
+
+    }
+
+    #info {
+        color: #2d2d86;
+        font-size: small;
+        text-align: right;
+    }
+
+    h3 , .tab{
+        color: #003e80;
+    }
+
+    #commentaire {
+        position: relative;
+        margin: 20px auto 0;
+        left: 20px;
+        width: 950px;
+    }
+    
+</style>
+
+
+<section class="clearfix animated wow fadeInDown" id="what">
+
+    <div class="content">
+        @{int i = 0;}
+        <div class="content1">
+            @foreach (var item in Model.PubicationClients)
+    {
+        if (i != 0)
+        {
+            <ul class="clearfix"></ul>}
+            <div class="content1-1">
+                <img src=@Url.Content("~/Content/img/Fournisseurs/" +item.Fournisseur.Photo + ".jpg")>
+                <h3>@Html.DisplayFor(model => item.Fournisseur.Nom) @Html.DisplayFor(model => item.Fournisseur.Prenom)</h3>
+                <br />
+                <div id="info">
+                    Telephone:@Html.DisplayFor(model => item.Fournisseur.Telephone) &nbsp;&nbsp;&nbsp;
+                    Gouvernerat :@Html.DisplayFor(model => item.Gouvernerat.Nom) &nbsp;&nbsp;&nbsp;
+                    Ville :@Html.DisplayFor(model => item.Ville.Nom) &nbsp;&nbsp;&nbsp;
+                    Categorie :@Html.DisplayFor(model => item.Categorie.Nom) &nbsp;&nbsp;&nbsp;
+                </div><br />
+                <h3>Description:</h3> <div id="contenu">
+                    <br />@Html.DisplayFor(model => item.Description)<br />
+                </div>
+                <!--Html.ActionLink("Offrir une offre", "Create", "Commentaires", new { id = item.ID })-->
+                <br />
+                
+                    <h3>Commentaires</h3>
+                    <div id="commentaire">
+
+                        @foreach (var com in Model.Commentaires)
+                        {
+
+                            if (com.PublicationClient.ID == item.ID)
+                            {
+
+                        <div id="contenu"> 
+                            @Html.ActionLink(com.Fournisseur.Nom + " " + com.Fournisseur.Prenom, "Details", "Home", new { id = com.Fournisseur.ID }, new { @class = "tab" })
+                         @Html.DisplayFor(model => com.contenu)
+                        </div>
+
+                                <br />
+                             }
+                         }
+                        @if (Session["UserId"] != null)
+                            {
+                                using (Html.BeginForm("Create", "Commentaires", new { id = item.ID }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <textarea name="contenu"></textarea>
+                                    
+                                    
+                                        <input type="submit" name="go" id="go" value="Commenter"  class="col-md-offset-2 col-md-10"/>
+                                    
+
+
+
+                                }
+                            }
+                    </div>
+                </div>
+
+                <br />{ i++; }
+                <ul class="clearfix"></ul>
+                }
+
+            </div>
+   </div>
+   
+    
+
+</section>
+    <script>
+        $(document).ready(function () {
+            // Handler for .ready() called.
+            $('html, body').animate({
+                scrollTop: $('#what').offset().top
+            }, 'slow');
+        });
+    </script>
+
+

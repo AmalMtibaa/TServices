@@ -1,0 +1,77 @@
+﻿@model IEnumerable<TServices.Models.Fournisseur>
+
+@{
+    ViewBag.Title = "FiltrerParCategorie";
+    Layout = "~//Views/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    a:active,
+    a:hover {
+        outline: 0;
+    }
+
+    a {
+        margin: 0;
+        padding: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+        color: #00ace6;
+    }
+    img {
+        height: 230px;
+        width: 350px;
+    }
+    .checked {
+        color: orange;
+    }
+</style>
+<section class="services wrapper" id="what">
+
+    @{
+
+        int i = 0;
+        @:<ul class="clearfix">
+
+
+            foreach (var item in Model)
+            {
+
+                if (i % 3 == 0)
+                {
+                    @:</ul>
+                @:<ul class="clearfix">
+                }
+                      <li class="animated wow fadeInDown">
+                          <img class="icon" src=@Url.Content("~/Content/img/Fournisseurs/" + item.Photo + ".jpg")>
+                          <span class="separator"></span>
+                          <h2>@Html.DisplayFor(modelItem => item.Nom) @Html.DisplayFor(modelItem => item.Prenom)</h2><br />
+                           @for (var A = 0; A < item.Rate; A++)
+                            {
+                               <span class="fa fa-star checked"></span>
+                            }
+                            @for (var j = 0; j < 5 - item.Rate; j++)
+                            {
+                             <span class="fa fa-star"></span>
+                            }
+                          <br /><br />
+                          @Html.ActionLink("Contact", "Details", new { id = item.ID })
+                      </li>
+                i++;
+
+            }
+
+            @:</ul>
+    }
+</section>
+<script>
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        $('html, body').animate({
+            scrollTop: $('#what').offset().top
+        }, 'slow');
+    });
+</script>

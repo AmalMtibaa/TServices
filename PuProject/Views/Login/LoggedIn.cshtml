@@ -1,0 +1,130 @@
+﻿@model TServices.Models.Fournisseur
+
+@{
+    ViewBag.Title = "LoggedIn";
+
+}
+
+<head>
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href='//fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
+    <link href=@Url.Content("~/Content/css/style.css") rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href=@Url.Content("~/Content/css/styleFormulaire.css")>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    body{
+        background-color:white;
+    }
+    #map {
+        height: 400px;
+        width: 150%;
+    }
+
+    section {
+        width: 350%;
+        background-color: white;
+    }
+
+    h3 {
+        color: aliceblue;
+    }
+
+    .checked {
+        color: orange;
+    }
+
+    img {
+        width: 450px;
+        height: 340px;
+    }
+    .form-control {
+        color: white;
+    }
+    #button{
+        font-size:medium;
+    }
+</style>
+<section class="clearfix animated wow fadeInDown" id="what">
+    <div class="content">
+        <div class="content1">
+            <div class="content1-1">
+                <img src=@Url.Content("~/Content/img/Fournisseurs/" + Model.Photo + ".jpg")>
+            </div>
+            <div class="content1-2">
+                <div class="contentinfo1">
+                    <h1> @Html.DisplayFor(model => model.Nom) @Html.DisplayFor(model => model.Prenom)</h1>
+                    @if (Model.ProposeService == true)
+    {
+        for (var i = 0; i < Model.Rate; i++)
+        {<span class="fa fa-star checked"></span>
+}
+for (var j = 0; j < 5 - Model.Rate; j++)
+{
+                <span class="fa fa-star"></span>
+}
+                <br />
+                <p>
+
+                    <h3>Telephone :@Html.DisplayFor(model => model.Telephone) <br /></h3>
+
+                    <h3>Service : @Html.DisplayFor(model => model.Id_Categorie) </h3>
+                    <h3>Description : @Html.DisplayFor(model => model.Description)</h3>
+                </p>
+                <h1>
+                    Localisation :
+                </h1> <h3>@Html.DisplayFor(model => model.Gouvernorat)  @Html.DisplayFor(model => model.Ville)</h3><br />
+                <div id="map"></div>
+}
+else
+{
+                <div id="button">
+                    @Html.ActionLink("Voulez-vous proposez un service?", "Edit", new { id = Model.ID })
+                </div> <br />
+}
+                    <div id="button">
+                        @Html.ActionLink("Mes publication", "MesPublication", "PublicationClients")
+                    </div>
+                </div>
+                
+             </div>
+        </div>
+    </div>
+
+
+</section>
+<p>
+
+    @Html.ActionLink("Back to List", "Recherche")
+</p>
+<script>
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        $('html, body').animate({
+            scrollTop: $('#what').offset().top
+        }, 'slow');
+    });
+</script>
+<script>
+
+    function initMap() {
+        var uluru = {lat: @Html.DisplayFor(model => model.Lat).ToString().Replace(',','.'), lng: @Html.DisplayFor(model => model.Lon).ToString().Replace(',', '.')};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+
+    
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDM-rxOUBgW9hX1lvkW8A5NZJnLkFkJjk4&callback=initMap">
+</script>

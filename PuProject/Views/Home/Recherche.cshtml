@@ -1,0 +1,131 @@
+﻿@model TServices.Models.CatFour2
+
+@{
+    ViewBag.Title = "Recherche";
+}
+@{
+<head>
+    <!--<link rel="stylesheet" type="text/css" href=Url.Content("~/Content/css/recherche.css")>-->
+</head>
+<style>
+        a:active,
+        a:hover {
+            outline: 0;
+        }
+
+        a {
+            margin: 0;
+            padding: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+            color: #00ace6;
+        }
+
+        img {
+            height: 230px;
+            width: 350px;
+        }
+        #what{
+            width:750px;
+            font-size:20px;
+            align-content:center;
+        }
+    .login100-form-btn {
+        width: 100px;
+        height:40px;
+        background-color: #1f1f2e;
+        color: white;
+        font-size: small;
+        border-radius: 10px;
+        
+    }
+    
+    .form-control {
+        width: 80px;
+        height:38px;
+        font-size:small;
+    }
+   
+</style>
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    foreach (var item in Model.cat2)
+    {
+        listItems.Add(new SelectListItem
+        {
+            Text = item.Nom,
+            Value = item.Nom
+        });
+    }
+
+    List<SelectListItem> listItems1 = new List<SelectListItem>();
+    foreach (var item in Model.Gouvernerat)
+    {
+        listItems1.Add(new SelectListItem
+        {
+            Text = item.Nom,
+            Value = item.Nom
+        });
+    }
+
+    List<SelectListItem> listItems2 = new List<SelectListItem>();
+    foreach (var item in Model.Ville)
+    {
+        listItems2.Add(new SelectListItem
+        {
+
+            Text = item.Nom,
+            Value = item.Nom
+        });
+    }
+
+}
+    @using (Html.BeginForm("Recherche", "Home", FormMethod.Get))
+    {
+<div id="what" class="login100-form-btn">
+    Categorie: @Html.DropDownList("Categorie", listItems, new { @class = "form-control" })
+    Gouvernorat:&nbsp;&nbsp; @Html.DropDownList("Gouvernorat", listItems1, new { @class = "form-control" })
+    Ville:&nbsp;&nbsp; @Html.DropDownList("Ville", listItems2, new { @class = "form-control" })
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+   <input class="login100-form-btn bt" type="submit" value="Filter" onclick="$('.z')[0].focus()" />
+    
+</div>
+        
+}
+
+    <section class="services wrapper"  >
+        @{
+            int i = 0;
+            @:<ul class="clearfix">
+
+
+                foreach (var item in Model.four)
+                {
+
+                    if (i % 3 == 0)
+                    {
+                        @:</ul>
+                  @:<ul class="clearfix">
+                    }
+                    <li class="animated wow fadeInDown">
+                        <img class="icon" src=@Url.Content("~/Content/img/Fournisseurs/" + item.Photo + ".jpg")>
+                        <span class="separator"></span>
+                        <h2>@Html.DisplayFor(modelItem => item.Nom) @Html.DisplayFor(modelItem => item.Prenom)</h2><br />
+                        @Html.ActionLink("Contact", "Details", new { id = item.ID })
+                    </li>
+                    i++;
+
+                }
+
+                @:</ul>
+        }
+    </section>
+<script>
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        $('html, body').animate({
+            scrollTop: $('#what').offset().top
+        }, 'slow');
+    });
+</script>
